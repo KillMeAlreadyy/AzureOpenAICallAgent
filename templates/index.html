@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ava</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script type="module" src="{{ url_for('static', filename='main.js')}}" ></script>
+    <script type="module" src="{{ url_for('static', filename='js/sendMessage.js')}}" ></script>
+    <script type="module" src="{{ url_for('static', filename='js/other.js')}}" ></script>
+    <link rel="icon" href="{{ url_for('static', filename='assets/Logo.png')}}">
+</head>
+
+<body>
+    <header>
+        <h1>AVA V2</h1>
+    </header>
+    <div class="container">
+        <div class="chat-log" id="chat-log">
+            <div id="loader-wrapper" class="loader-wrapper">
+                <img src="{{ url_for('static', filename='assets/bot.webp') }}" alt="Bot" class="loader-bot-img">
+                <div class="wrapper">
+                    <div class="loader-content">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="scroll-to-bottom" id="scroll-to-bottom">
+            ↓
+        </button>
+        <div class="chat-box">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,303 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+  font-size: 18px;
+}
+
+header {
+  background-color: #003366;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  max-width: 600px;
+  height: 100%;
+  position: relative;
+}
+
+.chat-log {
+  flex: 1;
+  width: 100%;
+  max-height: 78vh; /* Set a fixed height as needed */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow-y: scroll; 
+  background: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative; /* This ensures child elements like the button are positioned relative to this container */
+}
+
+.chat-log::-webkit-scrollbar{
+  display: none;
+}
+
+.chat-message {
+  display: flex;
+  align-items: flex-start;
+  margin: 10px 0;
+}
+
+.chat-message.bot {
+  flex-direction: row;
+}
+
+.chat-message.user {
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.chat-message img {
+  width: 80px; /* Adjust size to be smaller */
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 10px;
+}
+
+.chat-message .message {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: white;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+
+.chat-box input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.chat-box button {
+  padding: 10px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.chat-box button:hover {
+  background-color: #005599;
+}
+
+.loader-bot-img {
+  width: 80px; 
+  height: 80px;
+  border-radius: 50%;
+  margin:0 10px; /* Space between image and loader */
+}
+
+.loader-wrapper{
+  display:flex;
+  justify-content: left;
+  display: none;
+}
+
+.wrapper {
+  width: 200px;
+  height: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.circle {
+  width: 10px;  /* Changed from 20px */
+  height: 10px;  /* Changed from 20px */
+  position: absolute;
+  border-radius: 50%;
+  background-color: #000;
+  left: 5%;  /* Adjusted for closer positioning */
+  transform-origin: 50%;
+  animation: circle7124 .5s alternate infinite ease;
+}
+
+@keyframes circle7124 {
+  0% {
+    top: 60px;
+    height: 5px;
+    border-radius: 50px 50px 25px 25px;
+    transform: scaleX(1.7);
+  }
+
+  40% {
+    height: 10px;  /* Changed from 20px */
+    border-radius: 50%;
+    transform: scaleX(1);
+  }
+
+  100% {
+    top: 40%;
+  }
+}
+
+.circle:nth-child(2) {
+  left: 20%;  /* Adjusted for closer positioning */
+  animation-delay: .2s;
+}
+
+.circle:nth-child(3) {
+  left: auto;
+  right: 60%;  /* Adjusted for closer positioning */
+  animation-delay: .3s;
+}
+
+.shadow {
+  width: 10px;  /* Changed from 20px */
+  height: 2px;  /* Changed from 4px */
+  border-radius: 50%;
+  background-color: rgba(0,0,0,0.9);
+  position: absolute;
+  top: 62px;
+  transform-origin: 50%;
+  z-index: -1;
+  left: 5%;  /* Adjusted for closer positioning */
+  filter: blur(1px);
+  animation: shadow046 .5s alternate infinite ease;
+}
+
+@keyframes shadow046 {
+  0% {
+    transform: scaleX(1.5);
+  }
+
+  40% {
+    transform: scaleX(1);
+    opacity: .7;
+  }
+
+  100% {
+    transform: scaleX(.2);
+    opacity: .4;
+  }
+}
+
+.shadow:nth-child(4) {
+  left: 20%;  /* Adjusted for closer positioning */
+  animation-delay: .2s
+}
+
+.shadow:nth-child(5) {
+  left: auto;
+  right: 60%;  /* Adjusted for closer positioning */
+  animation-delay: .3s;
+}
+.scroll-to-bottom {
+  display: block;
+  position: absolute; /* Ensure it's positioned relative to the chat-log container */
+  bottom: 90px; /* 10px from the bottom of the chat-log container */
+  left: 50%;
+  transform: translateX(-50%); /* Center it horizontally */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  z-index: 1000;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.scroll-to-bottom.hide {
+  opacity: 0;
+  pointer-events: none; /* Prevent clicks when hidden */
+}
+
+.scroll-to-bottom.show {
+  opacity: 1;
+  pointer-events: auto; /* Allow clicks when visible */
+}
+
+.scroll-to-bottom:hover {
+  background-color: #0056b3;
+}
+
+li{
+  margin-left: 10px;
+}
+.feedback-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.rating {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row-reverse; /* this is the magic */
+  justify-content: flex-end;
+}
+
+.rating input {
+  display: none;
+}
+
+.rating label {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.rating label:hover,
+.rating label:hover ~ label { /* reason why the stars are in reverse order in the html */
+  color: orange;
+}
+
+.rating input:checked ~ label {
+  color: orange;
+}
+
+.comment {
+  margin-bottom: 20px;
+}
+
+.comment textarea {
+  width: 100%;
+  height: 100px;
+  resize: none;
+}
+
+.submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
